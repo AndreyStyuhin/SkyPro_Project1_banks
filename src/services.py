@@ -30,6 +30,3 @@ def anylize_cashback(file_path: str, year: int, month: int) -> dict[str, int]:
     result = cashback_by_category.to_dict()
     return json.dumps(result, ensure_ascii=False, indent=4)
 
-    # Здесь должен быть код для формирования и возврата результата
-    #return {}  # Заглушка
-

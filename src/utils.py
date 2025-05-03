@@ -1,15 +1,22 @@
 import json
+import os
 from datetime import datetime
-
+from dotenv import load_dotenv
 import pandas as pd
 import requests
 from pandas import DataFrame
 from pandas.core.computation.common import result_type_many
 
-URL = "https://api.apilayer.com/currency_data/convert"
-API_KEY = "GCGafly8aQO9QhrYCEpjIdF14EixNCqI"
+# Загрузить переменные из .env
+load_dotenv()
 
-API_KEY_STOCK = "1c2c542c62cdcc57513d86f2f38f290c"  # ← API ключ stock!
+URL = "https://api.apilayer.com/currency_data/convert"
+# API_KEY = "GCGafly8aQO9QhrYCEpjIdF14EixNCqI"
+# Получить ключи
+API_KEY = os.getenv("API_KEY_CURRENCY")
+API_KEY_STOCK = os.getenv("API_KEY_STOCK")
+
+# API_KEY_STOCK = "1c2c542c62cdcc57513d86f2f38f290c"  # ← API ключ stock!
 BASE_URL = "http://api.marketstack.com/v1/eod"
 URL_STOCK = f"{BASE_URL}?access_key={API_KEY_STOCK}&symbols=AAPL"
 
