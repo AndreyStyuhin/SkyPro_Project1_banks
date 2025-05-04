@@ -1,10 +1,11 @@
-import pandas as pd
 import logging
+
+import pandas as pd
+
 from logging_config import setup_logging
-from src.services import anylize_cashback
-from src.utils import get_time_for_greeting, get_data_time, get_path_and_period
-from src.views import main_info
 from src.reports import spending_by_category
+from src.services import anylize_cashback
+from src.views import main_info
 
 # Инициализация логгера
 setup_logging()
@@ -31,6 +32,7 @@ def main():
         logger.error(f"Error occurred: {str(e)}", exc_info=True)
     finally:
         logger.info("Application finished")
+
 
 if __name__ == "__main__":
     main()

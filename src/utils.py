@@ -1,11 +1,11 @@
 import json
 import os
 from datetime import datetime
-from dotenv import load_dotenv
+
 import pandas as pd
 import requests
+from dotenv import load_dotenv
 from pandas import DataFrame
-from pandas.core.computation.common import result_type_many
 
 # Загрузить переменные из .env
 load_dotenv()
@@ -125,10 +125,10 @@ def get_top_transactions(sorted_df: DataFrame, get_top):
     ]
     for index, row in top_transactions_sorted.iterrows():
         transaction = {
-        "date": f"{row['Дата платежа']}",
-        "amount": f"{row['Сумма операции']}",
-        "category": f"{row['Категория']}",
-        "description": f"{row['Описание']}",
+            "date": f"{row['Дата платежа']}",
+            "amount": f"{row['Сумма операции']}",
+            "category": f"{row['Категория']}",
+            "description": f"{row['Описание']}",
         }
         top_pay_transactions.append(transaction)
     return top_pay_transactions
