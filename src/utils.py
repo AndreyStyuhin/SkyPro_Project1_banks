@@ -1,15 +1,22 @@
 import json
+import os
 from datetime import datetime
 
 import pandas as pd
 import requests
+from dotenv import load_dotenv
 from pandas import DataFrame
-from pandas.core.computation.common import result_type_many
+
+# Загрузить переменные из .env
+load_dotenv()
 
 URL = "https://api.apilayer.com/currency_data/convert"
-API_KEY = "GCGafly8aQO9QhrYCEpjIdF14EixNCqI"
+# API_KEY = "GCGafly8aQO9QhrYCEpjIdF14EixNCqI"
+# Получить ключи
+API_KEY = os.getenv("API_KEY_CURRENCY")
+API_KEY_STOCK = os.getenv("API_KEY_STOCK")
 
-API_KEY_STOCK = "1c2c542c62cdcc57513d86f2f38f290c"  # ← API ключ stock!
+# API_KEY_STOCK = "1c2c542c62cdcc57513d86f2f38f290c"  # ← API ключ stock!
 BASE_URL = "http://api.marketstack.com/v1/eod"
 URL_STOCK = f"{BASE_URL}?access_key={API_KEY_STOCK}&symbols=AAPL"
 
@@ -118,10 +125,10 @@ def get_top_transactions(sorted_df: DataFrame, get_top):
     ]
     for index, row in top_transactions_sorted.iterrows():
         transaction = {
-        "date": f"{row['Дата платежа']}",
-        "amount": f"{row['Сумма операции']}",
-        "category": f"{row['Категория']}",
-        "description": f"{row['Описание']}",
+            "date": f"{row['Дата платежа']}",
+            "amount": f"{row['Сумма операции']}",
+            "category": f"{row['Категория']}",
+            "description": f"{row['Описание']}",
         }
         top_pay_transactions.append(transaction)
     return top_pay_transactions

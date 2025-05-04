@@ -24,12 +24,8 @@ def anylize_cashback(file_path: str, year: int, month: int) -> dict[str, int]:
     ]
 
     expenses_by_category = (filtered_data.groupby("Категория")["Сумма платежа"].sum())
-    cashback_by_category = (abs(expenses_by_category)) //100
+    cashback_by_category = (abs(expenses_by_category)) // 100
 
-    #print(cashback_by_category)
+    # print(cashback_by_category)
     result = cashback_by_category.to_dict()
     return json.dumps(result, ensure_ascii=False, indent=4)
-
-    # Здесь должен быть код для формирования и возврата результата
-    #return {}  # Заглушка
-
